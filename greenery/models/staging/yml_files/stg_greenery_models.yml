@@ -1,0 +1,28 @@
+# Project 1 
+# Question 2.2.3
+# Add a schema.yml file in models/staging
+
+version: 2
+
+models:
+
+  - name: stg_addresses
+    description: Stage version of raw dbt.public.addresses data. Describes user addresses. Primary key (id) of stg_addresses builds connection(s) to stg_users and stg_orders.
+
+  - name: stg_events
+    description: Stage version of raw dbt.public.events data. Describes event interactions on company website. Primary key (id) of stg_events builds connection(s) to nothing.
+
+  - name: stg_order_items
+    description: Stage version of raw dbt.public.order_items data. Describes items of an order contained in stg_orders. Primary key (id) of stg_order_items builds connection(s) to stg_orders.
+
+  - name: stg_orders
+    description: Stage version of raw dbt.public.orders data. Describes orders made by users. Primary key (id) of stg_orders builds connection(s) to stg_events and stg_order_items.
+
+  - name: stg_products
+    description: Stage version of raw dbt.public.products data. Describes company product details. Primary key (id) of stg_products builds connection(s) to stg_events and stg_order_items.
+
+  - name: stg_promos
+    description: Stage verion of raw dbt.public.promos data. Describes company promotions. Primary key (id) of stg_promos builds connection(s) to stg_orders.
+
+  - name: stg_users
+    description: Stage verions of raw dbt.public.users data. Describes users. Primary key of (id) of stg_uders builds connection(s) to stg_events and stg_orders.

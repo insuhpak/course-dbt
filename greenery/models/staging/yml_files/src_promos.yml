@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: greenery
+    schema: public
+    database: dbt
+
+    tables:
+
+      - name: promos
+
+        columns:
+          - name: promo_id
+            description: Primary key.
+            tests:
+              - unique
+              - not_null
+              
+          - name: discount
+          - name: status

@@ -1,0 +1,30 @@
+version: 2
+
+sources:
+  - name: greenery
+    schema: public
+    database: dbt
+
+    tables:
+
+      - name: orders
+        
+        columns: 
+          - name: order_id
+            description: Primary key.
+            tests:
+              - unique
+              - not_null
+              
+          - name: promo_id
+          - name: user_id
+          - name: address_id
+          - name: created_at
+          - name: order_cost
+          - name: shipping_cost
+          - name: order_total
+          - name: tracking_id
+          - name: shipping_service
+          - name: estimated_delivery_at
+          - name: delivered_at
+          - name: status

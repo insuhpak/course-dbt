@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: greenery
+    schema: public
+    database: dbt
+
+    tables:
+
+      - name: users
+
+        columns:
+          - name: user_id
+            description: Primary key.
+            tests:
+              - unique
+              - not_null
+              
+          - name: first_name
+          - name: last_name
+          - name: email
+          - name: phone_number
+          - name: created_at
+          - name: updated_at
+          - name: address_id

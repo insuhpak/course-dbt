@@ -1,0 +1,22 @@
+version: 2
+
+sources:
+  - name: greenery
+    schema: public
+    database: dbt
+
+    tables:
+
+      - name: addresses
+
+        columns: 
+          - name: address_id
+            description: Primary key.
+            tests:
+              - unique
+              - not_null
+
+          - name: address
+          - name: zipcode
+          - name: state
+          - name: country

@@ -1,0 +1,21 @@
+version: 2
+
+sources:
+  - name: greenery
+    schema: public
+    database: dbt
+
+    tables:
+
+      - name: products
+
+        columns:
+          - name: product_id
+            description: Primary key.
+            tests:
+              - unique
+              - not_null
+
+          - name: name
+          - name: price
+          - name: inventory
