@@ -11,9 +11,10 @@ SELECT
     eye_color,
     race,
     hair_color,
-    height,
+    nullif(height, -99) as height,
     publisher,
     skin_color,
     alignment,
-    weight
+    nullif(weight, -99) as weight,
+    {{ lbs_to_kgs('weight') }} as weight_kg
 FROM {{ source('tutorial', 'superheroes') }}

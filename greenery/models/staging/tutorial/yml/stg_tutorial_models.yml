@@ -15,4 +15,5 @@ models:
 
       - name: weight
         tests:
-          - positive_vlaues
+          - positive_values
+          
