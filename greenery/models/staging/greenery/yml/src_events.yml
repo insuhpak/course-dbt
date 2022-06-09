@@ -11,15 +11,28 @@ sources:
 
         columns:
           - name: event_id
-            description: Primary key.
+            description: Primary key. UUID of each unique event on the platform.
             tests:
               - unique
               - not_null
 
           - name: session_id
+            description: UUID of each browsing session on the platform which can contain many events.
+
           - name: user_id
+            description: References users.user_id. UUID of the user that this event is associated with.
+
           - name: event_type
+            description: Type of event.
+
           - name: page_url
+            description: URL that the event happened on.
+
           - name: created_at
+            description: Timestamp of the event.
+
           - name: order_id
+            description: References orders.order_id. If the event is specific to an order (mostly used for checkout).
+
           - name: product_id
+            description: Refrences products.products_id. If the event is specific to a product.

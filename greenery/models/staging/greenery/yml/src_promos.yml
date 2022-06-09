@@ -11,10 +11,13 @@ sources:
 
         columns:
           - name: promo_id
-            description: Primary key.
+            description: Primary key. Each unique promocode on platform.
             tests:
               - unique
               - not_null
               
           - name: discount
+            description: Absolute dollar amount that is given off with the code.
+
           - name: status
+            description: Is the promo code active or disabled?

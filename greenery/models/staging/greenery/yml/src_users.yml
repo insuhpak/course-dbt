@@ -11,15 +11,28 @@ sources:
 
         columns:
           - name: user_id
-            description: Primary key.
+            description: Primary key. UUID for each unique user on platform.
             tests:
               - unique
               - not_null
               
           - name: first_name
+            description: The first name of the user.
+
           - name: last_name
+            description: The last name of the user.
+
           - name: email
+            description: The email address of the user.
+
           - name: phone_number
+            description: The phone number of the user.
+
           - name: created_at
+            description: The timestamp the user was created.
+
           - name: updated_at
+            description: The timestamp the user was last updated.
+
           - name: address_id
+            description: References addresses.address_id. The default delivery address for the user.

@@ -11,20 +11,43 @@ sources:
         
         columns: 
           - name: order_id
-            description: Primary key.
+            description: Primary key. UUID for each unique order on platform.
             tests:
               - unique
               - not_null
               
           - name: promo_id
+            description: References promos.promo_id. PromoId if any was used in the order.
+
           - name: user_id
+            description: References users.user_id. UserId of the user that placed this order.
+
           - name: address_id
+            description: References addresses.address_id. Delivery address for this order.
+
           - name: created_at
+            description: Timestamp when the order was created.
+
           - name: order_cost
+            description: Dollar about of the items in the order.
+
           - name: shipping_cost
+            description: Cost of shipping for the order.
+
           - name: order_total
+            description: Total cost of the order including shipping.
+
           - name: tracking_id
+            description: Tracking number for the order/package.
+
           - name: shipping_service
+            description: Company that was used for shipping.
+
           - name: estimated_delivery_at
+            description: Estimated date of delivery.
+
           - name: delivered_at
+            description: Actual timestamp of delivery.
+
           - name: status
+            description: Status of the order.

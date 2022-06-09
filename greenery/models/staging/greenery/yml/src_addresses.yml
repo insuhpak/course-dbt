@@ -11,12 +11,19 @@ sources:
 
         columns: 
           - name: address_id
-            description: Primary key.
+            description: Primary key. UUID for each unique address on platform.
             tests:
               - unique
               - not_null
 
           - name: address
+            description: The first few lines of the address.
+
           - name: zipcode
+            description: The zipcode of the address.
+
           - name: state
+            description: The state this delivery address is based in.
+
           - name: country
+            description: The Country this delivery address is based in.
