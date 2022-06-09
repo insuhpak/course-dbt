@@ -9,6 +9,12 @@ models:
   - name: stg_addresses
     description: Stage version of raw dbt.public.addresses data. Describes user addresses. Primary key (id) of stg_addresses builds connection(s) to stg_users and stg_orders.
 
+    columns:
+      - name: id
+        tests:
+          - not_null
+          - unique
+
   - name: stg_events
     description: Stage version of raw dbt.public.events data. Describes event interactions on company website. Primary key (id) of stg_events builds connection(s) to nothing.
 
