@@ -33,10 +33,10 @@ select
 
 from dbt_insuh_p.stg_orders
 
-where delivered_at is not null
+where delivered_at_utc is not null
 ```
 
-> 3 days 2124:11.803279
+> 3 days 21:24:11.803279
 
 ## 3.4 How many users have only made one purchase? Two purchases? Three+ purchases?
 
