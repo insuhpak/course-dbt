@@ -22,7 +22,7 @@
 
     select 
 
-        sum(delivered_at - created_at) / count(id) as avg_delivery_time
+        sum(delivered_at_utc - created_at_utc) / count(id) as avg_delivery_time
 
     from dbt_insuh_p.stg_orders
 
