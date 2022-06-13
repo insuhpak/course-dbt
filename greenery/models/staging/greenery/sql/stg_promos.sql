@@ -1,6 +1,19 @@
-select
-    promo_id as id,
-    discount,
-    status
+with source as (
 
-from {{ source( 'greenery', 'promos' ) }}
+    select * from {{ source( 'greenery', 'promos' ) }}
+
+),
+
+renamed as (
+
+    select
+        promo_id as id,
+        discount,
+        status
+    
+    from
+        source
+
+)
+
+select * from source

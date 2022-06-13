@@ -1,11 +1,24 @@
-select
-    user_id as id,
-    first_name,
-    last_name,
-    email,
-    phone_number,
-    created_at,
-    updated_at,
-    address_id
+with source as (
 
-from {{ source( 'greenery', 'users' ) }}
+    select * from {{ source( 'greenery', 'users' ) }}
+
+),
+
+renamed as (
+
+    select 
+        user_id as id,
+        first_name,
+        last_name,
+        email,
+        phone_number,
+        created_at as created_at_utc,
+        updated_at as updated_at_utc,
+        address_id 
+
+    from
+        source
+
+)
+
+select * from renamed
