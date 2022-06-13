@@ -83,10 +83,21 @@ group by orders_per_user
 ## 3.5 On average, how many unique sessions do we have per hour?
 
 ```sql 
+with sessions_per_hour as (
+  select 
+    date_trunc('hour', created_at_utc) as created_at_utc_hour,
+    count(distinct session_id) as number_of_sessions
+  
+  from dbt_insuh_p.stg_events
+  
+  group by created_at_utc_hour
+)
+  
 select 
-    count(distinct session_id) / 21 as avg_distinct_sessions_per_hour
+    avg(number_of_sessions) as avg_sessions_per_hour
+    
+from sessions_per_hour
 
-from dbt_insuh_p.stg_events
 ```
 
-> 27
+> 6.3275862068965517
