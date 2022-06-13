@@ -4,7 +4,6 @@
 
 ``` sql
 select  
-
     count(distinct id) as number_of_users
 
 from dbt_insuh_p.stg_users
@@ -15,20 +14,29 @@ from dbt_insuh_p.stg_users
 ## 3.2 On average, how many orders do we receive per hour?
 
 ``` sql
-select distinct 
-
-    count(id) / 24 as avg_orders_per_hour
+with orders_per_hour as (
+  select 
+    date_trunc('hour', created_at_utc) as created_at_utc_hour,
+    count(created_at_utc) as number_of_orders
     
-from dbt_insuh_p.stg_orders
+  from dbt_insuh_p.stg_orders
+  
+  group by created_at_utc_hour
+)
+
+select 
+  -- sum(number_of_orders) / count( distinct created_at_utc_hour) as avg_orders_per_hour
+  avg(number_of_orders) as avg_orders_per_hour
+
+from orders_per_hour
 ```
 
-> 15
+> 7.5208333333333333
 
 ## 3.3 On average, how long does an order take from being placed to being delivered?
 
 ``` sql
 select 
-
     sum(delivered_at_utc - created_at_utc) / count(id) as avg_delivery_time
 
 from dbt_insuh_p.stg_orders
@@ -42,18 +50,17 @@ where delivered_at_utc is not null
 
 ```sql
 with orders_per_user as (
-select 
 
-    user_id,
-    count(distinct id) as orders_per_user
+    select 
+        user_id,
+        count(distinct id) as orders_per_user
 
-from dbt_insuh_p.stg_orders
+    from dbt_insuh_p.stg_orders
 
-group by user_id
+    group by user_id
 )
 
 select 
-
     orders_per_user,
     count( distinct user_id) as number_of_users
 
@@ -77,7 +84,6 @@ group by orders_per_user
 
 ```sql 
 select 
-
     count(distinct session_id) / 21 as avg_distinct_sessions_per_hour
 
 from dbt_insuh_p.stg_events
