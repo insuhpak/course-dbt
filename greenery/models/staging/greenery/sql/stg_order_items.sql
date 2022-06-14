@@ -7,7 +7,7 @@ with source as (
 renamed as (
 
     select
-        order_id as id,
+        order_id,
         product_id, 
         quantity
 
@@ -17,3 +17,4 @@ renamed as (
 )
 
 select * from renamed
+order by order_id
