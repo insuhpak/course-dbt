@@ -1,0 +1,15 @@
+version: 2
+
+models:
+
+  - name: int_orders_address_info
+    description: Joins address information to the stg_orders table via the address_id.
+
+  - name: int_orders_order_items_product_info
+    description: Joins order item(s) and product item(s) information to the stg_orders table via the order_id and product_id. 
+
+  - name: int_orders_promo_info
+    description: Joins promo information to the stg_orders table via the promo_id.
+
+  - name: int_orders_user_info
+    description: Joins user information to the stg_orders table via the user_id.

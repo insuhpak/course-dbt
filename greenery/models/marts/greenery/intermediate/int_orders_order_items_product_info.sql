@@ -5,19 +5,7 @@ with orders as (
 ),
 
 order_items_product_info as (
-
-    -- with order_items as (
-
-    -- select * from {{ ref('stg_order_items') }}
-
-    -- ),
-
-    -- product_info as (
-
-    --     select * from {{ ref('stg_products') }}
-
-    -- )
-
+    
     select
         order_items.order_id as order_id,
         order_items.quantity as ordered_quantity_of_product,
