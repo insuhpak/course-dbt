@@ -69,11 +69,38 @@ from
 ## (3) Adding int, dim, and/or fct models.
 
 #### int_ :
-> int_orders_full_address
->> This is an intermediate model because no analysis is done to produce it or in it. It joins two tables to be readily available for use elsewhere in the DAG.
+> int_orders_all_details
+>> I added this model so all order details, except events details, can be found in one table. (i.e. user, address, and promo details) Since this table also includes product details for each order, there can be multiple rows for one order.
+>>
+>> I added this at the intermediate level because it can be reused for different types of analyses. You can isolate/view data from the desired level without losing other order details or having to join tables at the dim/facts layer. For example, I can isolate all orders made with promotions and also view related order details in one table. (I will use this table to create the fct_promo_orders_all_details table.)
+
+> int_orders_more_details
+>> I added this model with the same reasoning as the int_orders_all_details table. I made this version because I wanted an int_ table with one row for each order. Therefore, this table does not have any order items/product information details but still has the other order details. (I could also make a fct_promo_orders_more_details table from this table. In general, most tables derived from int_orders_all_details can also have a int_orders_more_details version.)
 
 #### dim_ :
+> dim_users_more_details
+
+>> I added this model so more user details can be found in one table. 
+>>
+>> I added this at the dim/fact level because it is ready for analysis or to be loaded into a BI tool.
 
 #### fct_ :
-> fct_promo_orders.sql
->> This is fact model because it reflects orders/transactions. The model contains all orders made with a promotion code and information about each promotion.
+> fct_promo_orders_all_details
+
+>> I added this model to isolate all orders made with promotions.
+>>
+>> I added this at the dim/fact level because it is ready for analysis or to be loaded into a BI tool.
+
+> fct_orders_status_preparing
+
+>> I added this model to isolate all orders that have a status of preparing.
+>>
+>> I added this at the dim/fact level because it is ready for analysis or to be loaded into a BI tool.
+
+## (4) What assumptions are you making about each model? (i.e. why are you adding each test?)
+
+> For all source tables, I am testing unique and not null for the primary keys. Except for order_items, I am only testing not null because there can be multiple products associated to one order_id.
+
+> I am also testing for acceptable values and value formats at the source level. 
+>> src_addresses: (various tests can be applied to address elements depending on where we ship to)
+>>> zipcode: needs to be 5 digits and only numeric (assuming we only ship in US zipcodes)

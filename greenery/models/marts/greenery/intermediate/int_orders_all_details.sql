@@ -61,6 +61,7 @@ select
     users.full_name as full_name,
     users.first_name as first_name,
     users.last_name as last_name,
+    base.user_id as user_id,
     base.id as order_id,
     base.created_at_utc as order_created_at_utc,
     base.product_name as product_name,
@@ -81,6 +82,7 @@ select
     address.zipcode as zipcode,
     address.state as state,
     address.country as country,
+    base.address_id as address_id,
     base.estimated_delivery_at_utc as estimate_delivery_at_utc,
     base.delivered_at_utc as delivered_at_utc,
     users.email as user_email,
@@ -97,4 +99,4 @@ on base.promo_id = promo.id
 left join address
 on base.address_id = address.id
 
-order by order_status, order_id
+order by order_status, order_id, product_name

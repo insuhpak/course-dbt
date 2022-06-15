@@ -38,13 +38,15 @@ models:
       +materialized: view
 
     marts:
-      intermediate:
-        +materialized: view
+      greenery:
+        intermediate:
+          +materialized: view
 
-      marketing:
-        +materialized: table
-      product:
-        +materialized: table
+        marketing:
+          +materialized: table
 
-      core:
-        +materialized: table
+        product:
+          +materialized: table
+
+        core:
+          +materialized: table

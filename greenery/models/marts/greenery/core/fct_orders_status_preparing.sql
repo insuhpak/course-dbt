@@ -1,0 +1,15 @@
+with orders_more_details as (
+
+    select * from {{ ref('int_orders_more_details') }}
+    
+)
+
+select 
+    current_timestamp - order_created_at_utc as time_elapsed,
+    *
+
+from orders_more_details
+
+where order_status = 'preparing'
+
+order by time_elapsed desc, full_name

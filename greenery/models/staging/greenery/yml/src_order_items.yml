@@ -13,7 +13,6 @@ sources:
             - name: order_id 
               description: Part of primary key. References orders.order_id. May not be unique. (One order may order multiple different items.) OrderId of this order.
               tests:
-                - unique
                 - not_null
 
             - name: product_id
