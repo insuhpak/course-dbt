@@ -1,10 +1,10 @@
-with address as (
+with addresses as (
 
     select * from {{ ref('stg_addresses') }}
 
 ),
 
-promo as (
+promos as (
 
     select * from {{ ref('stg_promos') }}
 
@@ -70,18 +70,18 @@ select
     base.ordered_quantity_of_product as ordered_quantity_of_product,
     base.product_inventory as product_inventory,
     base.promo_id as promo_id,
-    promo.status as promo_status,
-    promo.discount as promo_discount_amount,
+    promos.status as promo_status,
+    promos.discount as promo_discount_amount,
     base.order_cost as order_cost,
     base.shipping_cost as shipping_cost,
     base.order_total as order_total_promo_applied,
     base.status as order_status,
     base.shipping_service as shipping_service,
     base.tracking_id as tracking_id,
-    address.address as street_address,
-    address.zipcode as zipcode,
-    address.state as state,
-    address.country as country,
+    addresses.address as street_address,
+    addresses.zipcode as zipcode,
+    addresses.state as state,
+    addresses.country as country,
     base.address_id as address_id,
     base.estimated_delivery_at_utc as estimate_delivery_at_utc,
     base.delivered_at_utc as delivered_at_utc,
@@ -93,10 +93,10 @@ from base
 left join users
 on base.user_id = users.id
 
-left join promo
-on base.promo_id = promo.id
+left join promos
+on base.promo_id = promos.id
 
-left join address
-on base.address_id = address.id
+left join addresses
+on base.address_id = addresses.id
 
 order by order_status, order_id, product_name

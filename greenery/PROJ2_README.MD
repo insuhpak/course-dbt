@@ -77,23 +77,34 @@ from
 > int_orders_more_details
 >> I added this model with the same reasoning as the int_orders_all_details table. I made this version because I wanted an int_ table with one row for each order. Therefore, this table does not have any order items/product information details but still has the other order details. (I could also make a fct_promo_orders_more_details table from this table. In general, most tables derived from int_orders_all_details can also have a int_orders_more_details version.)
 
+> int_events_product_details
+>> I added this model so product details can be found for each event. I do not add order items details because that information exists in the int_order_all_details table.
+>>
+>> I added this at the intermdiate level because it can be reused for different types of analyses.
+
 #### dim_ :
 > dim_users_more_details
-
+>
 >> I added this model so more user details can be found in one table. 
 >>
 >> I added this at the dim/fact level because it is ready for analysis or to be loaded into a BI tool.
 
 #### fct_ :
 > fct_promo_orders_all_details
-
+>
 >> I added this model to isolate all orders made with promotions.
 >>
 >> I added this at the dim/fact level because it is ready for analysis or to be loaded into a BI tool.
 
 > fct_orders_status_preparing
-
+>
 >> I added this model to isolate all orders that have a status of preparing.
+>>
+>> I added this at the dim/fact level because it is ready for analysis or to be loaded into a BI tool.
+
+> fct_product_details
+>
+>> I added this model to describe product interaction from events. 
 >>
 >> I added this at the dim/fact level because it is ready for analysis or to be loaded into a BI tool.
 
