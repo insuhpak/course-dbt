@@ -1,21 +1,25 @@
+-- # LIST OF PRODUCTS AND SOME BASIC INFOMRATION
 with product_list as (
 
     select * from {{ ref('stg_products') }}
 
 ),
 
+-- # EVENT DETAILS WITH BASIC PRODUCT INFORMATION INCLUDED
 events_product_details as (
 
     select * from {{ ref('int_events_product_details') }}
 
 ),
 
+-- # ORDER INFORMATION WITH BASIC PRODUCT INFORMATION INCLUDED
 orders_all_details as (
 
     select * from {{ ref('int_orders_all_details') }}
 
 ),
 
+-- # VIEWED AND IN CART COUNTS FOR PRODUCTS (VIEWED AND IN CART ARE STILL IN ONE COLUMN)
 not_ordered_rows as (
 
     select 
@@ -34,6 +38,7 @@ not_ordered_rows as (
 
 ),
 
+-- # VIEWED AND IN CART HAVE BEEN SPLIT INTO TWO COLUMNS (NULLS IN EMPTY ROWS)
 not_ordered_columns as (
 
     select 
@@ -51,6 +56,7 @@ not_ordered_columns as (
 
 ),
 
+-- # VIEWED IN SEPARATE TABLE THAN IN CART (TO REMOVE NULL ROWS)
 viewed_column as (
 
     select 
@@ -61,6 +67,7 @@ viewed_column as (
     where viewed is not null
 ),
 
+-- # IN CART IN SEPARATE TABLE THAN VIEWED (TO REMOVE NULL ROWS)
 in_cart_column as (
 
     select 
@@ -72,6 +79,7 @@ in_cart_column as (
 
 ), 
 
+-- # ORDERED COUNT COLUMN ISOLATED 
 ordered_column as (
 
     select
@@ -86,6 +94,7 @@ ordered_column as (
 
 )
 
+-- # SHOW COUNT OF VIEWED, IN CART AND ORDERED FOR EACH PRODUCT
 select 
     product_list.*
     , viewed_column.viewed

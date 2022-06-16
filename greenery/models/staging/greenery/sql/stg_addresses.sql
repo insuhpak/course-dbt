@@ -6,11 +6,11 @@ renamed as (
 
     select
 
-        address_id as id,
-        address,
-        zipcode,
-        state,
-        country
+        address_id as id
+        , address
+        , zipcode
+        , state
+        , country
 
     from
         source

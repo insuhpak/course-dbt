@@ -7,10 +7,10 @@ with source as (
 renamed as (
 
     select
-        product_id as id,
-        name,
-        price,
-        inventory
+        product_id as id
+        , name
+        , price
+        , inventory
 
     from
         source

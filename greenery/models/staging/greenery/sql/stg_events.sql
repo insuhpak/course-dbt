@@ -7,14 +7,14 @@ with source as (
 renamed as (
 
     select
-        event_id as id,
-        session_id, 
-        user_id,
-        event_type,
-        page_url,
-        created_at as created_at_utc,
-        order_id,
-        product_id
+        event_id as id
+        , session_id
+        , user_id
+        , event_type
+        , page_url
+        , created_at as created_at_utc
+        , order_id
+        , product_id
 
     from
         source

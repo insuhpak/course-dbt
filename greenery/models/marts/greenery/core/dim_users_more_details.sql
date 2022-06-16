@@ -1,15 +1,18 @@
+-- # LIST OF ALL USERS AND BASIC INFORMATION
 with users as (
 
     select * from {{ ref('stg_users') }}
 
 ),
 
+-- # LIST OF ALL ORDERS
 orders as (
 
     select * from {{ ref('stg_orders') }}
 
 ),
 
+-- # COUNT OF ORDERS PER USER
 users_with_orders as (
 
     select
@@ -22,23 +25,25 @@ users_with_orders as (
 
 ),
 
+-- # USERS ADDRESS INFORMATION
 addresses as (
 
     select * from {{ ref('stg_addresses') }}
 
 )
 
+-- # ADDRESSES AND AGG'D ORDER INFORMATION ADDED
 select
-    users.full_name as full_name,
-    users.first_name as first_name,
-    users.last_name as last_name,
-    users.email as email,
-    users.phone_number as phone_number,
-    addresses.address as street_address,
-    addresses.zipcode as zipcode,
-    addresses.state as state,
-    addresses.country as country,
-    coalesce( users_with_orders.number_of_orders, 0) as number_of_orders
+    users.full_name as full_name
+    , users.first_name as first_name
+    , users.last_name as last_name
+    , users.email as email
+    , users.phone_number as phone_number
+    , addresses.address as street_address
+    , addresses.zipcode as zipcode
+    , addresses.state as state
+    , addresses.country as country
+    , coalesce( users_with_orders.number_of_orders, 0) as number_of_orders
 
 from users
 left join addresses

@@ -7,9 +7,9 @@ with source as (
 renamed as (
 
     select
-        promo_id as id,
-        discount,
-        status
+        promo_id as id
+        , discount
+        , status
     
     from
         source

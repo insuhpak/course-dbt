@@ -7,9 +7,9 @@ with source as (
 renamed as (
 
     select
-        order_id,
-        product_id, 
-        quantity
+        order_id
+        , product_id
+        , quantity
 
     from 
         source

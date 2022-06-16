@@ -1,12 +1,14 @@
+-- # LIST OF ORDERS WITH MORE THAN THE BASIC DETAILS
 with orders_more_details as (
 
     select * from {{ ref('int_orders_more_details') }}
     
 )
 
+-- # LIST ORDERS WITH PREPARING STATUS AND THE TIME ELAPSED SINCE ORDER
 select 
-    current_timestamp - order_created_at_utc as time_elapsed,
-    *
+    current_timestamp - order_created_at_utc as time_elapsed
+    , *
 
 from orders_more_details
 
