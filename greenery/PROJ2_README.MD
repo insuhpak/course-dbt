@@ -101,9 +101,12 @@ from
 
 > For all source tables, I am testing unique and not null for the primary keys. Except for order_items, I am only testing not null because there can be multiple products associated to one order_id.
 
-> I am also testing for acceptable values and value formats at the source level. 
+> I am also testing for acceptable values and value formats at the stage level. 
 >> stg_addresses: (various tests can be applied to address elements depending on where we ship to)
 >>> zipcode: needs to be 5 digits (data type is integer so I am not checking if zipcode is numeric)
+>>
+>> stg_users:
+>>> email:  needs to include an '@' and '.'
 
 
 ## (5) Did you find any “bad” data as you added and ran tests on your models? How did you go about either cleaning the data in the dbt model or adjusting your assumptions/tests?

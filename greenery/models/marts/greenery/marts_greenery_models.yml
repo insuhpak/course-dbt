@@ -3,13 +3,7 @@ version: 2
 models:
 
   - name: int_orders_all_details
-    description: >
-      This table includes all order details except event details. 
-      There may be multiple rows for one order because one order may contain
-      multiple different products. There is one row for each product.
+    description: '{{ doc("int_orders_all_details") }}'
 
   - name: int_orders_more_details
-    description: >
-      This table includes more order details except event details.
-      Unlike int_orders_all_details, one order may only have one row in this table.
-      
+    description: '{{ doc("int_orders_more_details") }}'

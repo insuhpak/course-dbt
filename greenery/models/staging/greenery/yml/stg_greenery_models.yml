@@ -10,25 +10,33 @@ models:
     description: Stage version of raw dbt.public.addresses data.
 
     columns:
-      - name: id
-        tests:
-          - not_null
-          - unique
-
       - name: zipcode
         tests:
           - five_digit_integer
 
   - name: stg_events
     description: Stage version of raw dbt.public.events data.
+
   - name: stg_order_items
     description: Stage version of raw dbt.public.order_items data.
+
   - name: stg_orders
     description: Stage version of raw dbt.public.orders data.
 
   - name: stg_products
     description: Stage version of raw dbt.public.products data.
+
   - name: stg_promos
     description: Stage verion of raw dbt.public.promos data.
+
   - name: stg_users
     description: Stage verions of raw dbt.public.users data.
+
+    columns:
+      - name: email
+        tests: 
+        - email
+
+      - name: phone_number
+        tests:
+          - phone_number

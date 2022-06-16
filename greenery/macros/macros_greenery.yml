@@ -1,0 +1,13 @@
+version: 2
+
+macros:
+
+  - name: emails
+    description: Verifies an email column. Searches for an '@' and a '.'.
+
+  - name: five_digit_integer
+    description: Verifies an integer column. Checks value length of 5.
+
+  - name: phone_number
+    description: Verifies a phone_number column. Checks for 3values-3values-4values.
+
