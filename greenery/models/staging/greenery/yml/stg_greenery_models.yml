@@ -15,6 +15,10 @@ models:
           - not_null
           - unique
 
+      - name: zipcode
+        tests:
+          - five_digit_integer
+
   - name: stg_events
     description: Stage version of raw dbt.public.events data.
   - name: stg_order_items

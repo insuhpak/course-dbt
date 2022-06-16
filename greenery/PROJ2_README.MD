@@ -102,5 +102,10 @@ from
 > For all source tables, I am testing unique and not null for the primary keys. Except for order_items, I am only testing not null because there can be multiple products associated to one order_id.
 
 > I am also testing for acceptable values and value formats at the source level. 
->> src_addresses: (various tests can be applied to address elements depending on where we ship to)
->>> zipcode: needs to be 5 digits and only numeric (assuming we only ship in US zipcodes)
+>> stg_addresses: (various tests can be applied to address elements depending on where we ship to)
+>>> zipcode: needs to be 5 digits (data type is integer so I am not checking if zipcode is numeric)
+
+
+## (5) Did you find any “bad” data as you added and ran tests on your models? How did you go about either cleaning the data in the dbt model or adjusting your assumptions/tests?
+
+> stg_addresses.zipcode had some zipcodes that did not match a 5 digit integer format. The test will result in an error but still compile the table. Someone will need to go in an replace the incorrect zipcode with the correct zipcode at the source level. So the change does not need to be continously reapplied.
