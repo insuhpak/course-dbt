@@ -2,7 +2,7 @@ version: 2
 
 macros:
 
-  - name: emails
+  - name: email
     description: Verifies an email column. Searches for an '@' and a '.'.
 
   - name: five_digit_integer
