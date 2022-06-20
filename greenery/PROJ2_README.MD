@@ -1,13 +1,3 @@
-I had trouble determining when an intermediate model was appropriate versus a dim/fct model. Also how granual an intermediate model should be. For example, I had initially created individual int models for each of the following joins: orders (+)addresses; orders (+)promos; orders (+)users; orders (+)order_items (+)products.
-However, I condensed them into int_orders_all_details (= orders (+)addresses (+)promos (+)users (+)orders_items (+)products) and int_orders_more_details (= orders (+)addresses (+)promos (+)users).
-
-A question that I have is:
-Can dim/fct models reference both intermediate and stage models? Or should dim/fct models only reference intermediate models?
-
-I would like feed back on: model layer structure and my dim/fct models' SQL.
-
-I feel like I came up with some generally helpful dim/fct models.
-
 # WEEK 2 PROJECT
 
 ## (1) What is our user repeat rate?
