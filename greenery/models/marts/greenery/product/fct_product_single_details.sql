@@ -8,7 +8,7 @@ with product_list as (
 -- EVENT DETAILS WITH BASIC PRODUCT INFORMATION INCLUDED
 events_product_details as (
 
-    select * from {{ ref('int_events_product_details') }}
+    select * from {{ ref('int_events_single_details') }}
 
 ),
 
@@ -43,7 +43,7 @@ not_ordered_event_types_agg as (
         product_id
         , product_name
         , {{ dbt_utils.pivot('event_type', 
-                             dbt_utils.get_column_values(ref('int_events_product_details'), 'event_type' )
+                             dbt_utils.get_column_values(ref('int_events_single_details'), 'event_type' )
                             ) 
           }}
 
