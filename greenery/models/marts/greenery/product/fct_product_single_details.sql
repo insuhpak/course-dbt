@@ -42,8 +42,9 @@ not_ordered_event_types_agg as (
     select 
         product_id
         , product_name
-        , {{ dbt_utils.pivot('event_type', 
-                             dbt_utils.get_column_values(ref('int_events_single_details'), 'event_type' )
+        , {{ dbt_utils.pivot('event_type'
+                             , dbt_utils.get_column_values(ref('int_events_single_details'), 'event_type' )
+                             , distinct=false
                             ) 
           }}
 
@@ -61,6 +62,7 @@ select
     , not_ordered_columns.page_view as viewed
     , not_ordered_columns.add_to_cart as added_to_cart
     , ordered_column.ordered as ordered
+    , {{ division_to_percentage('ordered_column.ordered', 'not_ordered_columns.page_view') }} as conversion_rate
 
 from product_list
 left join not_ordered_event_types_agg as not_ordered_columns

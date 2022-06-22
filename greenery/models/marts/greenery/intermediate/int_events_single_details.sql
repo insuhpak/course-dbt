@@ -1,12 +1,15 @@
-with products as (
-
-    select * from {{ ref('stg_products') }}
-
-),
+with 
 
 base as (
 
     select * from {{ ref('stg_events') }}
+
+)
+,
+
+ products as (
+
+    select * from {{ ref('stg_products') }}
 
 )
 

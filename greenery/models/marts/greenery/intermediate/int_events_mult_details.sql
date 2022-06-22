@@ -41,3 +41,5 @@ select
 from base
 left join order_items_product_info
 on base.order_id = order_items_product_info.order_id
+
+order by session_id
