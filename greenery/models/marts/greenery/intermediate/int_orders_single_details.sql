@@ -1,4 +1,10 @@
-with addresses as (
+with base as (
+
+    select * from {{ ref('stg_orders') }}
+
+),
+
+addresses as (
 
     select * from {{ ref('stg_addresses') }}
 
@@ -13,19 +19,6 @@ promos as (
 users as (
 
     select * from {{ ref('stg_users') }}
-
-),
-
-orders as (
-
-    select * from {{ ref('stg_orders') }}
-
-),
-
-
-base as (
-
-    select * from orders
 
 )
 
