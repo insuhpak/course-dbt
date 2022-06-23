@@ -5,8 +5,30 @@ models:
   - name: int_orders_fk_joined_notunique_pk
     description: '{{ doc("int_orders_fk_joined_notunique_pk") }}'
 
+    tests: 
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - cpk_order_id
+            - cpk_product_id
+    
+    columns:
+      - name: cpk_order_id
+        tests:
+          - not_null
+
+      - name: cpk_product_id
+        test:
+          - not_null
+
+
   - name: int_orders_fk_joined_unique_pk
     description: '{{ doc("int_orders_fk_joined_unique_pk") }}'
+
+    columns:
+      - name: pk_order_id
+        tests:
+        - unique
+        - not_null
 
   - name: int_order_items_product_info_joined
     description: '{{ doc("int_order_items_product_info_joined") }}'
