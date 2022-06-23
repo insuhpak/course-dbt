@@ -2,29 +2,11 @@ version: 2
 
 models:
 
-  - name: int_orders_mult_details
-    description: '{{ doc("int_orders_mult_details") }}'
+  - name: int_orders_fk_joined_notunique_pk
+    description: '{{ doc("int_orders_fk_joined_notunique_pk") }}'
 
-  - name: int_orders_single_details
-    description: '{{ doc("int_orders_single_details") }}'
+  - name: int_orders_fk_joined_unique_pk
+    description: '{{ doc("int_orders_fk_joined_unique_pk") }}'
 
-  - name: int_events_product_details
-    description: '{{ doc("int_events_product_details") }}'
-
-  - name: dim_users_single_details
-    description: > 
-      Includes how many total orders an user has made. 
-      Also, includes all other known user information. 
-
-  - name: fct_orders_status_preparing
-    description: >
-      Lists all orders with 'preparing' status and the elapsed time since order.
-
-  - name: fct_promo_orders_mult_details
-    description: >
-      Filters int_orders_mult_details to only show orders made with a promo code.
-
-  - name: fct_product_single_details
-    description: >
-      Lists all products and it's basic information. 
-      Also, includes number of user interactions made with each product (viewed, added to cart, ordered).
+  - name: int_order_items_product_info_joined
+    description: '{{ doc("int_order_items_product_info_joined") }}'

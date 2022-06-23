@@ -15,7 +15,7 @@ events_product_details as (
 -- ORDER INFORMATION WITH BASIC PRODUCT INFORMATION INCLUDED
 orders_all_details as (
 
-    select * from {{ ref('int_orders_mult_details') }}
+    select * from {{ ref('int_orders_fk_joined_notunique_pk') }}
 
 ),
 

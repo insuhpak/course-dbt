@@ -1,7 +1,7 @@
 -- # LIST OF ORDERS WITH MORE THAN THE BASIC DETAILS
 with orders_more_details as (
 
-    select * from {{ ref('int_orders_single_details') }}
+    select * from {{ ref('int_orders_fk_joined_unique_pk') }}
     
 )
 
