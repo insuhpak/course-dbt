@@ -1,4 +1,4 @@
--- SESSION INFROMATION FROM EVENTS TABLE
+-- SESSION INFORMATION FROM EVENTS TABLE
 with all_events as (
 
     select * from {{ ref('stg_events') }}

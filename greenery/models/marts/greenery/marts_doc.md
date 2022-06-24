@@ -31,10 +31,13 @@ stg_order_items (+)stg_products
 
 {% enddocs %}
 
-# int_events_not_ordered_types_unique_pk
-{% docs int_events_not_ordered_types_unique_pk %}
+# int_sessions_order_and_product_info_notunique_pk
+{% docs int_sessions_order_and_product_info_notunique_pk %}
 
-- This table is produced by the following join: stg_events (+)stg_products.
-- This table isolated event_ids that do not have an order_id. Effectively, isolating only events associated to non-ordered related event types.
+- This table is produced by the following join: stg_events (+)stg_order_items (+)stg_products
+
+- The primary key to this table would be a composite key of event_id and product_id
+
+- There may be multiple rows for one event_id if it is a checkout or package_shipped event because one order may have multiple products.
 
 {%enddocs%}

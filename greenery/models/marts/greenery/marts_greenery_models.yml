@@ -33,19 +33,22 @@ models:
   - name: int_order_items_product_info_joined
     description: '{{ doc("int_order_items_product_info_joined") }}'
 
-  - name: int_events_not_ordered_types_unique_pk
-    description: '{{ doc("int_events_not_ordered_types_unique_pk") }}'
+  - name: int_sessions_order_and_product_info_notunique_pk
+    description: '{{ doc("int_sessions_order_and_product_info_notunique_pk") }}'
+
+    tests: 
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - cpk_event_id
+            - cpk_product_id
 
     columns:
-      - name: pk_event_id
+      - name: cpk_event_id
         tests:
-          - unique
           - not_null
 
-  - name: int_events_ordered_types_notunique_pk
-    # description: '{{ doc("int_events_ordered_types_notunique_pk") }}'
+      - name: cpk_product_id
+        test:
+          - not_null
 
-    # tests: 
-    #   - dbt_utils.unique_combination_of_columns:
-    #       combination_of_columns:
             
