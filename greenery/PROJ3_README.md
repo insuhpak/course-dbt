@@ -4,21 +4,12 @@
 What is our overall conversion rate?
  ```sql
     select
-        count( distinct session_id ) as unique_sessions
-        , sum ( case
-            when checkout > 0 then 1
-            else 0
-            end ) 
-        as purchase_event_sessions
-        , sum ( case
-            when checkout > 0 then 1
-            else 0
-            end ) 
-        / count( distinct session_id ) :: float * 100 || '%' as conversion_rate
+    round ( sum(case when checkout > 0 then 1 else 0 end)
+    / count(session_id) :: numeric * 100 , 2 ) || '%' as conversion_rate
     
-    from dbt_insuh_p.fct_session_single_details
+    from dbt_insuh_p.fct_unique_sessions_events
  ```
-> 62.45674740484429%
+> 62.46%
 
 What is our conversion rate by product?
 ``` sql
@@ -69,6 +60,7 @@ What is our conversion rate by product?
 |fb0e8be7-5ac4-4a76-a1fa-2cc4bf0b2d80|String of pearls|80.5|58|60.94%|
 |b66a7143-c18a-43bb-b5dc-06bb5d1d3160|ZZ Plant|25|89|53.97%|
 
+*Note to self, fct_unique_sessions_events and fct_unique_product_events are similar counter part tables but have different table structures. One is macro based table and another non-macro based table.* 
 
 ## Part 2
 

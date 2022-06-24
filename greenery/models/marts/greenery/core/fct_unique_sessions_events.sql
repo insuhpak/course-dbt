@@ -10,11 +10,13 @@ select
     -- SESSION INFORMATION
     distinct session_id
     , user_id
-    , event_type
-    , count( event_id) as events_per_session
-    , sum( count(  event_id) ) over( partition by session_id ) as total_events_per_session
+
+    , {{sum_case_when('event_type', 'page_view', '1', '0') }} as page_view
+    , {{sum_case_when('event_type', 'add_to_cart', '1', '0') }} as add_to_cart
+    , {{sum_case_when('event_type', 'checkout', '1', '0') }} as checkout
+    , {{sum_case_when('event_type', 'package_shipped', '1', '0') }} as package_shipped
 
 from base
 
-group by 1, 2, 3
+group by 1, 2
 order by session_id
