@@ -22,7 +22,7 @@ final as (
 
     from base
 
-    group by 1, 2,3, 4, 5
+    group by 1, 2, 3, 4, 5
     order by product_name
 
 )
