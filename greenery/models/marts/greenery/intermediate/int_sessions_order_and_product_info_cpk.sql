@@ -1,5 +1,7 @@
 with 
 
+-- EVENT INFORMATION
+-- INCLUDES EVENT INFORMATION FOR ORDERED PRODUCTS AND NOT ORDERED PRODUCTS
 base as (
 
     select * from {{ ref('stg_events') }}
@@ -7,6 +9,8 @@ base as (
 )
 ,
 
+-- PROVIDE ALL PRODUCT INFORMATION
+-- WHERE AS ORDER_PRODUCT_INFO WILL ONLY PROVIDE PRODUCT INFO FOR PRODUCTS THAT HAVE BEEN ORDERED
  product_info as (
 
     select * from {{ ref('stg_products') }}
@@ -14,6 +18,7 @@ base as (
 )
 ,
 
+-- PRODIVE ORDER INFORMATION FOR ORDERED PRODUCTS
 order_product_info as (
 
     select * from {{ ref('int_order_items_product_info_joined') }}
