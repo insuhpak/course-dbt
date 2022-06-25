@@ -1,6 +1,6 @@
 with base as (
 
-    select * from {{ ref('int_orders_fk_joined_unique_pk') }}
+    select * from {{ ref('int_orders_fk_joined_pk') }}
 
 )
 ,

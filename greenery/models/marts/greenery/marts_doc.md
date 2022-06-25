@@ -1,5 +1,5 @@
-# int_orders_fk_joined_notunique_pl
-{% docs int_orders_fk_joined_notunique_pk %}
+# int_orders_fk_joined_cpl
+{% docs int_orders_fk_joined_cpk %}
 - This table is produced by the following joins:
 stg_orders (+)stg_users (+)stg_promos (+)stg_addresses (+)stg_order_items (+)stg_products
 
@@ -11,8 +11,8 @@ stg_orders (+)stg_users (+)stg_promos (+)stg_addresses (+)stg_order_items (+)stg
 
 {% enddocs %}
 
-# int_orders_fk_joined_unique_pk
-{% docs int_orders_fk_joined_unique_pk %}
+# int_orders_fk_joined_pk
+{% docs int_orders_fk_joined_pk %}
 
 - This table is produced by the following joins:
 stg_orders (+)stg_users (+)stg_promos (+)stg_addresses
@@ -31,8 +31,8 @@ stg_order_items (+)stg_products
 
 {% enddocs %}
 
-# int_sessions_order_and_product_info_notunique_pk
-{% docs int_sessions_order_and_product_info_notunique_pk %}
+# int_sessions_order_and_product_info_cpk
+{% docs int_sessions_order_and_product_info_cpk %}
 
 - This table is produced by the following join: stg_events (+)stg_order_items (+)stg_products
 
