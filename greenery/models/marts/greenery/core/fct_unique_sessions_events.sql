@@ -1,6 +1,6 @@
 with base as (
 
-    select * from {{ ref('int_sessions_order_and_product_info_cpk') }}
+    select * from {{ ref('int_events_order_and_product_info_cpk') }}
 
 )
 
