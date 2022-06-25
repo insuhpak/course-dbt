@@ -12,19 +12,7 @@ What is our overall conversion rate?
 
 What is our conversion rate by product?
 ``` sql
-    select
-    product_id
-    , product_name
-    , product_price
-    , product_inventory
-    
-    , sum( case when event_type = 'checkout' then unique_sessions_per_product else 0  end ) /
-        sum( case when event_type = 'page_view' then unique_sessions_per_product else 0 end ) :: float * 100 || '%' as product_conversion_rate
-    
-    from dbt_insuh_p.fct_unique_product_events
-
-    group by 1, 2, 3, 4
-    order by product_name
+    select * from dbt_insuh_p.fct_unique_product_events
 ```
 |product_id|product_name|product_price|product_inventory|product_conversion_rate|
 |---|---|---|---|---|

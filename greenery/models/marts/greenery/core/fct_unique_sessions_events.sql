@@ -11,6 +11,7 @@ select
     distinct session_id
     , user_id
 
+    -- EVENT SESSION
     , {{sum_case_when('event_type', 'page_view', '1', '0') }} as page_view
     , {{sum_case_when('event_type', 'add_to_cart', '1', '0') }} as add_to_cart
     , {{sum_case_when('event_type', 'checkout', '1', '0') }} as checkout

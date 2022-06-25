@@ -5,7 +5,7 @@ with base as (
 )
 ,
 
-final as (
+distinct_sessions as (
 
     select
 
@@ -26,5 +26,28 @@ final as (
     order by product_name
 
 )
+,
+
+final as (
+    
+    select
+        distinct product_id
+        , product_name
+
+        , {{ sum_case_when('event_type', 'page_view', 'unique_sessions_per_product', '0') }} as page_view
+        , {{ sum_case_when('event_type', 'add_to_cart', 'unique_sessions_per_product', '0') }} as add_to_cart
+        , {{ sum_case_when('event_type', 'checkout', 'unique_sessions_per_product', '0') }} as checkout
+        , {{ sum_case_when('event_type', 'package_shipped', 'unique_sessions_per_product', '0') }} as package_shipped
+
+        , {{ division_to_percentage( sum_case_when('event_type', 'checkout', 'unique_sessions_per_product', '0') ,
+            sum_case_when('event_type', 'page_view', 'unique_sessions_per_product', '0') ) }} as product_conversion_rate
+
+    from distinct_sessions
+
+    group by 1, 2
+    order by product_name
+
+)
+
 
 select * from final
