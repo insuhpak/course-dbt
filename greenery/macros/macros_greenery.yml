@@ -2,12 +2,45 @@ version: 2
 
 macros:
 
-  - name: email
-    description: Verifies an email column. Searches for an '@' and a '.'.
+  - name: test_email
+    description: |
+      Verifies an email column. Searches for an '@' and a '.'.
 
-  - name: five_digit_integer
-    description: Verifies an integer column. Checks value length of 5.
+  - name: test_five_digit_integer
+    description: |
+      Verifies an integer column. Checks value length of 5.
 
-  - name: phone_number
-    description: Verifies a phone_number column. Checks for 3values-3values-4values.
+  - name: test_phone_number
+    description: |
+      Verifies a phone_number column. Checks for 3values-3values-4values.
 
+  - name: division_to_percentage
+    description: |
+      # division_to_percentage(numerator, denominator)
+
+      * Output: Percentage rounded to two decimal points
+
+    arguments:
+      - name: numerator
+        type:
+        description: number to be divided by denominator
+      - name: denominator
+        type:
+        description: number to divide numerator
+
+  - name: sum_case_when
+    description: |
+      # sum_case_when(column_name, value, then_value, else_value)
+      Call this function rather than manually entering complete Sum(Case When) statements in your SQL file
+
+      * Output: SUM( CASE WHEN column_name = 'value' THEN then_value ELSE else_value END )
+
+    arguments:
+      - name: column_name
+        description: apply condition to this column
+      - name: value
+        description: condition value
+      - name: then_value
+        description: value if condition is true
+      - name: else_value
+        description: value if condition is false

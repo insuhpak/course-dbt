@@ -1,6 +1,5 @@
 # Week 3 Project 
 
-## Part 1
 What is our overall conversion rate?
  ```sql
     select
@@ -59,18 +58,3 @@ What is our conversion rate by product?
 |64d39754-03e4-4fa0-b1ea-5f4293315f67|Spider Plant|15|67|47.46%|
 |fb0e8be7-5ac4-4a76-a1fa-2cc4bf0b2d80|String of pearls|80.5|58|60.94%|
 |b66a7143-c18a-43bb-b5dc-06bb5d1d3160|ZZ Plant|25|89|53.97%|
-
-*Note to self, fct_unique_sessions_events and fct_unique_product_events are similar counter part tables but have different table structures. One is macro based table and another non-macro based table.* 
-
-## Part 2
-
-## Part 3
-
-## Part 4
-Install a package (i.e. dbt-utils, dbt-expectations) and apply one or more of the macros to your project
-
-> Used dbt_utils.pivot and dbt_utils.get_column_values to aggregate event_type counts for each product in fct_product_details. (Replaces the use of Sum() and Case When() or other more elemetrary methods.)
-
-
-
-## Part 5
