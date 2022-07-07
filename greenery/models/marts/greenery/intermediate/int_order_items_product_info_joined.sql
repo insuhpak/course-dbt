@@ -1,10 +1,14 @@
-with base as (
+with 
+
+-- ORDER ITEMS INFORMATION
+base as (
 
     select * from {{ ref('stg_order_items') }}
 
 )
 ,
 
+-- PRODUCT INFORMATION
 product_info as (
 
     select * from {{ ref('stg_products') }}
@@ -15,8 +19,12 @@ product_info as (
 final as (
 
     select
+
+            -- ORDER ITEM INFORMATION
             base.order_id as order_id
             , base.quantity as ordered_quantity_of_product
+
+            --  PRODUCT INFORMATION
             , product_info.name as product_name
             , product_info.price as product_price
             , product_info.inventory as product_inventory

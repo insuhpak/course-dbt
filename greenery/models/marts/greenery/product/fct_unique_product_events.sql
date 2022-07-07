@@ -1,4 +1,7 @@
-with base as (
+with 
+
+-- EVENTS WITH ORDER AND PRODUCT INFORMATION
+base as (
 
     select * from {{ ref('int_events_order_and_product_info_cpk') }}
 

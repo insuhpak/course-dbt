@@ -61,4 +61,17 @@ Using dbt's best practices the data has been structured as so:
 * On average, how long does an order take from being placed to being delivered?
 * How many users have only made one purchase? Two purchases? Three+ purchases?
 * On average, how many unique sessions do we have per hour?
-> Answered in (PROJ1_README.md)
+> Answered [here](PROJ1_README.md).
+
+* What is our user repeat rate?
+> Answered [here](PROJ2_README.md).
+
+* What is our overall conversion rate?
+* What is our conversion rate by product?
+> Answered [here](PROJ3_README.md).
+
+* Define a Product funnel with 3 levels for our dataset:
+    * Sessions with any event of type page_view
+    * Sessions with any event of type add_to_cart
+    * Sessions with any event of type checkout
+> Answered [here](PROJ4.README.md).

@@ -1,10 +1,14 @@
-with base as (
+with 
+
+-- ORDER INFORMATION
+base as (
 
     select * from {{ ref('stg_orders') }}
 
 )
 ,
 
+-- USER ADDRESS INFORMATION
 addresses as (
 
     select * from {{ ref('stg_addresses') }}
@@ -12,6 +16,7 @@ addresses as (
 )
 ,
 
+-- PROMOTION INFORMATION
 promos as (
 
     select * from {{ ref('stg_promos') }}
@@ -19,6 +24,7 @@ promos as (
 )
 ,
 
+-- USER INFORMATION
 users as (
 
     select * from {{ ref('stg_users') }}
@@ -26,6 +32,7 @@ users as (
 )
 ,
 
+-- ORDERS WITH ADDITIONAL INFORMATION
 final as (
     select 
         -- # Table primary key (pk)

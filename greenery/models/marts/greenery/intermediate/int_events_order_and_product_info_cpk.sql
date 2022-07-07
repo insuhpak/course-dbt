@@ -25,6 +25,7 @@ order_product_info as (
 
 )
 
+-- EVENT INFORMATION WITH ORDER AND PRODUCTION INFORMATION ADDED
 select
     -- TABLE COMPOSITE PRIMARY KEY
     base.id as cpk_event_id

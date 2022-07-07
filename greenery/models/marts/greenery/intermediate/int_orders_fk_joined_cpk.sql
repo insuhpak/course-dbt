@@ -1,10 +1,14 @@
-with base as (
+with 
+
+-- ORDERS WITH ADDITIONAL INFOMRATION
+base as (
 
     select * from {{ ref('int_orders_fk_joined_pk') }}
 
 )
 ,
 
+-- PRODUCT INFORMATION FOR EACH ORDERED ITEM
 order_items_product_info as (
     
     select * from {{ ref('int_order_items_product_info_joined') }}
@@ -12,6 +16,7 @@ order_items_product_info as (
 )
 ,
 
+-- ORDERS WITH ADDITIONAL INFORMATION; SPECIFICALLY PRODUCT INFORMATION FOR EACH ORDER'S ORDERED ITEMS
 final as (
     select
         -- # Table composite primary key (cpk)
