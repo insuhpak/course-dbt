@@ -32,5 +32,24 @@ directly in our projects.
 
 **greenery** is a (mock) e-commerce start up that sells plants. As the Analytics Engineer for **greenery**, I have used dbt to transform and model our data to better serve our company. I have prepared the data to be ready for use in BI tools or directly queried to accurately and efficiently answer business inquiries. 
 
+### Project DAG
 Using dbt's best practices the data has been structured as so:
 ![greenery dag](Greenery_DAG.png)
+
+> * Source models (src_) have been lightly transformed to create stage versions (stg_).
+>   * The general naming convention of stage models are:
+>
+>                  stg _ [source_table_name]
+> * Stage models have been transformed into intermediate tables (int_). 
+>   * Intermediate models are pieces of reusable logic that replace the same sql that exist in multiple dimension/fact (dim_/fct_) tables. 
+>   * The general naming convention of intermediate models are: 
+> 
+>                  int _ [base_table] _ [joined_tables] _ joined _ [pk or cpk]
+> 
+>      where if *joined_tables*  = fk, then there are too many tables to list in the table name and *pk* means the table has a primary key versus a composite primary key (*cpk*).
+> * Intermediate models are transformed into dimension/fact models (dim_/fct_).
+>   * Dimension/fact models are ready to be used in BI tools or directyl queried from for business needs.
+>   * The general naming convention of dimension/fact models are: 
+> 
+>               [dim or int] _ [literal description]
+> * The orange node(s) represents external models/systems that are depedent on models defined in our dbt project.
